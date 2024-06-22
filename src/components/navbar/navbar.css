@@ -1,0 +1,88 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: relative;
+    z-index: 300;
+}
+
+.navbar .logo .name {
+    color: var(--color-text);
+}
+
+.navbar .logo .name span {
+    color: var(--color-white);
+}
+
+.navbar.visible {
+    position: sticky;
+    background: var(--color-ui-secondary);
+    box-shadow: var(--shadow-1);
+}
+
+.navbar.visible .logo .name span {
+    color: var(--color-primary);
+}
+
+.navbar .box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar .nav__tabs .tab {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: var(--color-white);
+    border-radius: var(--radius-3);
+}
+
+.navbar .nav__tabs .tab.active {
+    color: var(--color-white);
+    background: var(--gradient-1);
+}
+
+.navbar .contact__btn {
+    background: var(--gradient-1);
+    color: var(--color-white);
+}
+
+.navbar .cancel__btn,
+.navbar .menu__btn {
+    display: none;
+    background: transparent;
+    font-size: 25px;
+}
+
+.navbar .cancel__btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.navbar .menu__btn {
+    font-size: 2rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
