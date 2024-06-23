@@ -12,6 +12,7 @@ import { RiMenu3Fill } from 'react-icons/ri';
 import Logo from '../logo/Logo';
 
 const Navbar = () => {
+    const [open, setOpen] = useState(false);
     const [visible, setVisible] = useState(false);
 
     const handleScroll = () => {
@@ -43,10 +44,12 @@ const Navbar = () => {
 
     return (
         <nav className={`navbar ${visible ? 'visible' : ''}`}>
+            {open ? (<div className='sidebar__overlay' onClick={() => setOpen(!open)}></div>) : ''}
+
             <Logo />
 
-            <div className="box nav__tabs">
-                <div className="icon__container cancel__btn">
+            <div className={`box nav__tabs ${open ? 'open' : ''}`}>
+                <div className="icon__container cancel__btn" onClick={() => setOpen(!open)}>
                     <FaTimes />
                 </div>
 
@@ -58,7 +61,8 @@ const Navbar = () => {
                         activeClass='active'
                         smooth={true}
                         spy={true}
-                        offset={-60}
+                        offset={-70}
+                        onClick={() => setOpen(false)}
                     >
                         <p>{tab.name}</p>
                     </Link>
@@ -68,7 +72,7 @@ const Navbar = () => {
                 <Link to="contact" className='btn contact__btn'>
                     Contact Us
                 </Link>
-                <div className="icon__container menu__btn">
+                <div className="icon__container menu__btn" onClick={() => setOpen(!open)}>
                     <RiMenu3Fill />
                 </div>
             </div>

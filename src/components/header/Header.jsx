@@ -3,9 +3,11 @@ import './header.css';
 
 const Header = () => {
     return (
-        <div className='header'>
-            Header
-        </div>
+        <header className='header' id='header'>
+            <div className="container full__height">
+
+            </div>
+        </header>
     );
 }
 

@@ -41,6 +41,10 @@
     border-radius: var(--radius-3);
 }
 
+.navbar.visible .nav__tabs .tab {
+    color: var(--color-text);
+}
+
 .navbar .nav__tabs .tab.active {
     color: var(--color-white);
     background: var(--gradient-1);
@@ -66,6 +70,59 @@
 
 .navbar .menu__btn {
     font-size: 2rem;
+}
+
+.sidebar__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(1, 1, 1, .5);
+    z-index: 200;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    display: none;
+}
+
+@media (max-width: 1000px) {
+    .navbar .nav__tabs {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: -100%;
+        min-height: 100vh;
+        max-width: 350px;
+        display: block;
+        background: var(--color-ui-secondary);
+        transition: var(--transition);
+        z-index: 350;
+        padding: 20px;
+        padding-top: 60px;
+    }
+
+    .navbar .nav__tabs.open {
+        left: 0;
+    }
+
+    .navbar .nav__tabs .tab {
+        color: var(--color-text);
+    }
+
+    .navbar .cancel__btn,
+    .navbar .menu__btn {
+        display: flex;
+    }
+
+    .sidebar__overlay {
+        display: block;
+    }
+}
+
+@media (max-width: 500px) {
+    .navbar .contact__btn {
+        display: none;
+    }
 }
 
 
