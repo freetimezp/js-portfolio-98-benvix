@@ -4,6 +4,8 @@ import { Link } from 'react-scroll';
 
 import { hero_image } from '../../assets';
 
+import Achievement from '../achievement/Achievement';
+
 const Header = () => {
     return (
         <header className='header' id='header'>
@@ -36,6 +38,8 @@ const Header = () => {
                         </div>
                     </div>
                 </div>
+
+                <Achievement />
             </div>
         </header>
     );
