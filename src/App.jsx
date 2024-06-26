@@ -15,8 +15,8 @@ function App() {
     <>
       <Navbar />
       <Header />
-      {/* <About />
-      <Services />
+      <About />
+      {/* <Services />
       <Teams />
       <Project />
       <Testimonial />
