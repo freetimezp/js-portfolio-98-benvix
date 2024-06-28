@@ -20,8 +20,8 @@ function App() {
       <Teams />
       <Project />
       <Testimonial />
-      {/* <Blog />
-      <Contact />
+      <Blog />
+      {/* <Contact />
       <Footer /> */}
     </>
   );
