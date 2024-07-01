@@ -1,11 +1,46 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import "./contact.css";
 
 import { contacts } from '../../data';
 
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
 const Contact = () => {
+    const container = useRef(null);
+
+    useGSAP(() => {
+        const timeline = gsap.timeline({
+            delay: 0.5,
+            scrollTrigger: {
+                trigger: container.current,
+                start: "20% bottom",
+                end: "bottom top"
+            }
+        });
+
+        timeline
+            .fromTo(".contact__form", {
+                x: -100,
+                opacity: 0
+            }, {
+                x: 0,
+                opacity: 1
+            })
+            .fromTo(".option", {
+                x: 100,
+                opacity: 0
+            }, {
+                opacity: 1,
+                stagger: .5,
+                x: 0
+            });
+    }, { scope: container });
+
     return (
-        <section id="contact">
+        <section id="contact" ref={container}>
             <div className="container">
                 <div className="contact__form">
                     <div className="contact__form__top">

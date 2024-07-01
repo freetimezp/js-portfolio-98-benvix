@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './header.css';
 import { Link } from 'react-scroll';
 
@@ -6,9 +6,43 @@ import { hero_image } from '../../assets';
 
 import Achievement from '../achievement/Achievement';
 
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+
 const Header = () => {
+    const container = useRef(null);
+
+    useGSAP(() => {
+        const timeline = gsap.timeline({ delay: 1, stagger: 1 });
+
+        timeline
+            .fromTo(".image__container", {
+                scale: .5,
+                opacity: 0,
+                y: 150
+            }, {
+                scale: 1,
+                ease: "sine.in",
+                opacity: 1,
+                y: 0
+            })
+            .from(".title", {
+                opacity: 0,
+                y: -30
+            })
+            .from(".description", {
+                opacity: 0,
+                y: -30
+            })
+            .from(".buttons__container", {
+                opacity: 0,
+                y: 40
+            });
+
+    }, { scope: container });
+
     return (
-        <header className='header' id='header'>
+        <header className='header' id='header' ref={container}>
             <div className="container full__height">
                 <div className="row">
                     <div className="column">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import "./testimonial.css";
 
 import Slider from 'react-slick';
@@ -8,7 +8,44 @@ import "slick-carousel/slick/slick-theme.css";
 import { testimonial } from '../../data';
 import { FaStar } from 'react-icons/fa';
 
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
 const Testimonial = () => {
+    const container = useRef(null);
+
+    useGSAP(() => {
+        const timeline = gsap.timeline({
+            delay: 0.5,
+            scrollTrigger: {
+                trigger: container.current,
+                start: "20% bottom",
+                end: "bottom top"
+            }
+        });
+
+        timeline
+            .from(".title", {
+                y: -50,
+                opacity: 0
+            })
+            .from(".sub__title", {
+                y: -50,
+                opacity: 0
+            })
+            .fromTo(".slick-slide", {
+                x: 100,
+                opacity: 0,
+                stagger: .5
+            }, {
+                opacity: 1,
+                stagger: .5,
+                x: 0
+            });
+    }, { scope: container });
+
     const settings = {
         infinite: true,
         speed: 500,
@@ -29,7 +66,7 @@ const Testimonial = () => {
     };
 
     return (
-        <section id='testimonial'>
+        <section id='testimonial' ref={container}>
             <div className="container">
                 <h1 className="title">
                     Clients <span className='g-text'>Testimonials</span>

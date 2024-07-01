@@ -15,7 +15,6 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    transition: var(--transition);
 }
 
 .achievement__container .achievement:hover {

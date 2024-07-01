@@ -1,13 +1,62 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import "./about.css";
 
 import { about_image, building_1, building_2, building_3 } from '../../assets';
 import { FaCheck } from 'react-icons/fa';
 import { Link } from 'react-scroll';
 
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
 const About = () => {
+    const container = useRef(null);
+
+    useGSAP(() => {
+        const timeline = gsap.timeline({
+            delay: 0.5,
+            scrollTrigger: {
+                trigger: container.current,
+                start: "20% bottom",
+                end: "bottom top"
+            }
+        });
+
+        timeline
+            .from(".company__photo", {
+                opacity: 0,
+                x: -50
+            })
+            .from(".title", {
+                y: -50,
+                opacity: 0
+            })
+            .from(".sub__title", {
+                y: -50,
+                opacity: 0
+            })
+            .from(".box", {
+                x: 50,
+                opacity: 0,
+                stagger: .5
+            })
+            .from(".description", {
+                y: 50,
+                opacity: 0
+            })
+            .from(".group", {
+                y: 50,
+                opacity: 0
+            })
+            .from(".buttons__container", {
+                y: 50,
+                opacity: 0
+            })
+    }, { scope: container });
+
     return (
-        <section id='about'>
+        <section id='about' ref={container}>
             <div className="container">
                 <div className="column company__photo">
                     <img src={about_image} alt="about" />

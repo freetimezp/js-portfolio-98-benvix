@@ -49,6 +49,7 @@
     overflow: hidden;
     border-radius: var(--radius-2);
     transition: var(--transition);
+    opacity: 0;
 }
 
 #header .image__container:hover {

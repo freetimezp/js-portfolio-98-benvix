@@ -1,11 +1,48 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import "./teams.css";
 
 import { teams } from '../../data';
 
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
 const Teams = () => {
+    const container = useRef(null);
+
+    useGSAP(() => {
+        const timeline = gsap.timeline({
+            delay: 0.5,
+            scrollTrigger: {
+                trigger: container.current,
+                start: "20% bottom",
+                end: "bottom top"
+            }
+        });
+
+        timeline
+            .from(".title", {
+                y: -50,
+                opacity: 0
+            })
+            .from(".sub__title", {
+                y: -50,
+                opacity: 0
+            })
+            .fromTo(".team__card", {
+                x: 100,
+                opacity: 0,
+                stagger: .5
+            }, {
+                opacity: 1,
+                stagger: .5,
+                x: 0
+            });
+    }, { scope: container });
+
     return (
-        <section id="team">
+        <section id="team" ref={container}>
             <div className="container">
                 <h1 className="title">Our <span className='g-text'>Teams</span></h1>
 
